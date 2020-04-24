@@ -2,7 +2,7 @@ MultiCode - A Multi-Instance VSCode manager
 =============================
 ## About
 MultiCode allows you to have multiple, independent instances of VSCode next to each other for different purposes.  
-MultiCode is written in pure Python and is therefore cross-platform. Currently only Linux and Windows are supported. MacOS support will be added in the near future
+MultiCode is written in pure Python and is therefore cross-platform. Currently only Linux and Windows are supported. MacOS support will be added in the near future.
 
 ## Installation
 
