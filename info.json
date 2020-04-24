@@ -1,14 +1,3 @@
 {
-    "instances": [
-        {
-            "creationDate": "24.04.2020",
-            "lastUsedDate": "1.1.2000",
-            "name": "LaTeX"
-        },
-        {
-            "creationDate": "24.04.2020",
-            "lastUsedDate": "1.1.2000",
-            "name": "Java"
-        }
-    ]
+    "instances": []
 }

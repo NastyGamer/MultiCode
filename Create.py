@@ -42,6 +42,10 @@ def downloadFile():
     print(Fore.GREEN + "Done Fetching VSCode..." + Style.RESET_ALL)
 
 def extractFile(name):
+    if(not os.path.exists("instances/")):
+        print(Fore.YELLOW + "Creating instances folder..." + Style.RESET_ALL)
+        os.mkdir("instances")
+        print(Fore.GREEN + "Done creating instances folder..." + Style.RESET_ALL)
     print(Fore.YELLOW + "Extracting VSCode..." + Style.RESET_ALL)
     plat = getPlatform()
     if(plat == "Windows"):
