@@ -22,7 +22,7 @@ def runInstance():
     if(plat == "Windows"):
             subprocess.call("instances/" + name + "/Code.exe")
     elif(plat == "Linux"):
-           subprocess.call("instances/" + name + "/VSCode-linux-x64/Code.exe")
+           subprocess.call("instances/" + name + "/VSCode-linux-x64/Code")
     elif(plat == "Darwin"):
         print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
         exit(0)
