@@ -17,6 +17,5 @@ if(__name__ == "__main__"):
        Delete.deleteInstance()
     elif(sys.argv[1] == "run"):
         Run.runInstance()
-        pass
     else:
         print(Fore.RED + "Invalid argument. Available arguments are:\n-run\n-list\n-create\n-delete" + Style.RESET_ALL)
