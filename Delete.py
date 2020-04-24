@@ -1,5 +1,6 @@
 from Util import readInfo, writeInfo
 from Create import parseInstanceNames
+from colorama import Fore, Style
 
 def deleteInstance():
     names = parseInstanceNames()
@@ -8,7 +9,7 @@ def deleteInstance():
         name = input("Instance Name → ")
         if name in names:
             break
-        else: print("No instance with that name exists")
+        else: print(Fore.RED + "No instance with that name exists" + Style.RESET_ALL)
     info = readInfo()
     for i in range(len(info["instances"])):
         if(info["instances"][i]["name"] == name):

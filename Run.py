@@ -1,5 +1,6 @@
 from Util import readInfo, writeInfo
 from Create import parseInstanceNames
+from colorama import Fore, Style
 import subprocess
 
 def runInstance():
@@ -9,6 +10,6 @@ def runInstance():
         name = input("Instance Name → ")
         if name in names:
             break
-        else: print("No instance with that name exists")
+        else: print(Fore.RED + "No instance with that name exists" + Style.RESET_ALL)
     subprocess.call("instances/" + name + "/Code.exe")
     

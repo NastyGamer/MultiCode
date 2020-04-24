@@ -1,6 +1,7 @@
 from Util import readInfo, getPlatform, writeInfo
 from datetime import date
 import requests, shutil, os
+from colorama import Fore, Style
 
 def createInstance():
     names = parseInstanceNames()
@@ -9,7 +10,7 @@ def createInstance():
         name = input("Instance Name → ")
         if not name in names:
             break
-        else: print("An instance with that name already exists")
+        else: print(Fore.RED + "An instance with that name already exists" + Style.RESET_ALL)
     downloadFile()
     extractFile(name)
     createDataDir(name)
@@ -25,52 +26,52 @@ def parseInstanceNames():
 def downloadFile():
     plat = getPlatform()
     if(plat == "Windows"):
-        print("Detected OS: " + plat)
-        print("Fetching VSCode...")
+        print(Fore.CYAN + "Detected OS: " + plat + Style.RESET_ALL)
+        print(Fore.YELLOW + "Fetching VSCode..." + Style.RESET_ALL)
         url = "https://go.microsoft.com/fwlink/?Linkid=850641"
         open("tmp.zip", "wb").write(requests.get(url).content)
     elif(plat == "Linux"):
-        print("Fetching VSCode...")
+        print(Fore.YELLOW + "Fetching VSCode..." + Style.RESET_ALL)
         url = "https://go.microsoft.com/fwlink/?LinkID=620884"
         open("tmp.tar.gz", "wb").write(requests.get(url).content)
     elif(plat == "Darwin"):
-        print("MacOS is not yet implemented")
+        print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
         exit(0)
     else:
-        downloadFile(input("Could not determin the OS. Please input the OS manually (Windows, Linux, Darwin"))
-    print("Done Fetching VSCode...")
+        downloadFile(input(Fore.RED + "Could not determin the OS. Please input the OS manually (Windows, Linux, Darwin" + Style.RESET_ALL))
+    print(Fore.GREEN + "Done Fetching VSCode..." + Style.RESET_ALL)
 
 def extractFile(name):
-    print("Extracting VSCode...")
+    print(Fore.YELLOW + "Extracting VSCode..." + Style.RESET_ALL)
     plat = getPlatform()
     if(plat == "Windows"):
          shutil.unpack_archive("tmp.zip", "instances/" + name)
     elif(plat == "Linux"):
          shutil.unpack_archive("tmp.tar.gz", "instances/" + name)
     elif(plat == "Darwin"):
-        print("MacOS is not yet implemented")
+        print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
         exit(0)
-    print("Done extracting VSCode...")
+    print(Fore.GREEN + "Done extracting VSCode..." + Style.RESET_ALL)
 
 def createDataDir(name):
-    print("Creating data dir...")
+    print(Fore.YELLOW + "Creating data dir..." + Style.RESET_ALL)
     os.mkdir("instances/" + name + "/data")
-    print("Done creating data dir...")
+    print(Fore.GREEN + "Done creating data dir..." + Style.RESET_ALL)
 
 def deleteTmp():
-    print("Cleaning up...")
+    print(Fore.YELLOW + "Cleaning up..." + Style.RESET_ALL)
     plat = getPlatform()
     if(plat == "Windows"):
         os.remove("tmp.zip")
     elif(plat == "Linux"):
-                os.remove("tmp.tar.gz")
+        os.remove("tmp.tar.gz")
     elif(plat == "Darwin"):
-        print("MacOS is not yet implemented")
+        print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
         exit(0)
-    print("Done cleaning up")
+    print(Fore.GREEN + "Done cleaning up" + Style.RESET_ALL)
 
 def registerInJson(name):
-    print("Registering instance...")
+    print(Fore.YELLOW + "Registering instance..." + Style.RESET_ALL)
     info = readInfo()
     info["instances"].append({
         "name" : name, 
@@ -78,4 +79,4 @@ def registerInJson(name):
         "lastUsedDate":"1.1.2000"
         })
     writeInfo(info)
-    print("Done registering instance...")
+    print(Fore.GREEN + "Done registering instance..." + Style.RESET_ALL)
