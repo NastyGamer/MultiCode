@@ -1,4 +1,4 @@
-from Util import readInfo, writeInfo
+from Util import readInfo, writeInfo, getPlatform
 from Create import parseInstanceNames
 from colorama import Fore, Style
 from datetime import date
@@ -18,5 +18,12 @@ def runInstance():
              info["instances"][i]["lastUsedDate"] = date.today().strftime("%d.%m.%Y")
              break
     writeInfo(info)
-    subprocess.call("instances/" + name + "/Code.exe")
+    plat = getPlatform()
+    if(plat == "Windows"):
+            subprocess.call("instances/" + name + "/Code.exe")
+    elif(plat == "Linux"):
+           subprocess.call("instances/" + name + "/VSCode-linux-x64/Code.exe")
+    elif(plat == "Darwin"):
+        print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
+        exit(0)
     

@@ -31,10 +31,12 @@ def downloadFile():
         url = "https://go.microsoft.com/fwlink/?Linkid=850641"
         open("tmp.zip", "wb").write(requests.get(url).content)
     elif(plat == "Linux"):
+        print(Fore.CYAN + "Detected OS: " + plat + Style.RESET_ALL)
         print(Fore.YELLOW + "Fetching VSCode..." + Style.RESET_ALL)
         url = "https://go.microsoft.com/fwlink/?LinkID=620884"
         open("tmp.tar.gz", "wb").write(requests.get(url).content)
     elif(plat == "Darwin"):
+        print(Fore.CYAN + "Detected OS: " + plat + Style.RESET_ALL)
         print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
         exit(0)
     else:
@@ -59,6 +61,14 @@ def extractFile(name):
 
 def createDataDir(name):
     print(Fore.YELLOW + "Creating data dir..." + Style.RESET_ALL)
+    plat = getPlatform()
+    if(plat == "Windows"):
+        os.mkdir("instances/" + name + "/data")
+    elif(plat == "Linux"):
+       os.mkdir("instances/" + name + "VSCode-linux-x64/data")
+    elif(plat == "Darwin"):
+        print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
+        exit(0)
     os.mkdir("instances/" + name + "/data")
     print(Fore.GREEN + "Done creating data dir..." + Style.RESET_ALL)
 
