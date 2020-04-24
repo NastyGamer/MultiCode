@@ -25,22 +25,18 @@ def parseInstanceNames():
 
 def downloadFile():
     plat = getPlatform()
+    print(Fore.CYAN + "Detected OS: " + plat + Style.RESET_ALL)
     if(plat == "Windows"):
-        print(Fore.CYAN + "Detected OS: " + plat + Style.RESET_ALL)
         print(Fore.YELLOW + "Fetching VSCode..." + Style.RESET_ALL)
         url = "https://go.microsoft.com/fwlink/?Linkid=850641"
         open("tmp.zip", "wb").write(requests.get(url).content)
     elif(plat == "Linux"):
-        print(Fore.CYAN + "Detected OS: " + plat + Style.RESET_ALL)
         print(Fore.YELLOW + "Fetching VSCode..." + Style.RESET_ALL)
         url = "https://go.microsoft.com/fwlink/?LinkID=620884"
         open("tmp.tar.gz", "wb").write(requests.get(url).content)
     elif(plat == "Darwin"):
-        print(Fore.CYAN + "Detected OS: " + plat + Style.RESET_ALL)
         print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
         exit(0)
-    else:
-        downloadFile(input(Fore.RED + "Could not determin the OS. Please input the OS manually (Windows, Linux, Darwin" + Style.RESET_ALL))
     print(Fore.GREEN + "Done Fetching VSCode..." + Style.RESET_ALL)
 
 def extractFile(name):
@@ -69,7 +65,6 @@ def createDataDir(name):
     elif(plat == "Darwin"):
         print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
         exit(0)
-    os.mkdir("instances/" + name + "/data")
     print(Fore.GREEN + "Done creating data dir..." + Style.RESET_ALL)
 
 def deleteTmp():
