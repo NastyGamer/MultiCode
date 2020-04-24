@@ -65,7 +65,7 @@ def createDataDir(name):
     if(plat == "Windows"):
         os.mkdir("instances/" + name + "/data")
     elif(plat == "Linux"):
-       os.mkdir("instances/" + name + "VSCode-linux-x64/data")
+       os.mkdir("instances/" + name + "/VSCode-linux-x64/data")
     elif(plat == "Darwin"):
         print(Fore.RED + "MacOS is not yet implemented" + Style.RESET_ALL)
         exit(0)
