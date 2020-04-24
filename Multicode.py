@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sys, List, Create, Delete, Run
 from colorama import init, Fore, Style
 
