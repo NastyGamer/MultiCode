@@ -16,7 +16,7 @@ https://github.com/NastyGamer/MultiCode/archive/master.zip
 head into the repository:  
 <pre><code>cd MultiCode</pre></code>
 and install the requirements:  
-<pre><code>pip -r requirements.txt</pre></code>
+<pre><code>pip install -r requirements.txt</pre></code>
 
 ## Usage  
 ### List installed instances  
